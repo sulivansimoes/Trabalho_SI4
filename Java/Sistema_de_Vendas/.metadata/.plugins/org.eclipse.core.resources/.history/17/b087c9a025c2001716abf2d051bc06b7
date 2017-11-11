@@ -1,7 +1,0 @@
-package br.edu.univas.si.view.cadastrounidademedida;
-
-import javax.swing.JPanel;
-
-public class PanelTableUnidadeMedida extends JPanel {
-
-}

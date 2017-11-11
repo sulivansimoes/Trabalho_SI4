@@ -1,9 +1,0 @@
-package br.edu.univas.si.view.cadastrousuario;
-
-import br.edu.univas.si.view.util.MyJFrame;
-
-public class FrameCadastroUsuario extends MyJFrame{
-
-	private static final long serialVersionUID = -6140725584051515117L;
-
-}

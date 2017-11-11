@@ -1,5 +1,0 @@
-package br.edu.univas.si.model.dao.consulta.jtables;
-
-public class GridUsuarioDAO {
-
-}

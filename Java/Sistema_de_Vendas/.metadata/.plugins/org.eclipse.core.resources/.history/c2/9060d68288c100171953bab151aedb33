@@ -1,8 +1,0 @@
-package br.edu.univas.si.view.cadastroproduto;
-
-import javax.swing.JPanel;
-
-public class PanelInclusaoProduto extends JPanel{
-
-	
-}

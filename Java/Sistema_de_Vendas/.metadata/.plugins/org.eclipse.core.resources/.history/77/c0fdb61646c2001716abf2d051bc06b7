@@ -1,7 +1,0 @@
-package br.edu.univas.si.view.cadastroproduto;
-
-import br.edu.univas.si.view.util.MyJFrame;
-
-public class FrameInluirProduto extends MyJFrame {
-
-}
