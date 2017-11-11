@@ -3,7 +3,7 @@ CREATE TABLE Usuario(
     nome VARCHAR(60) NOT NULL,
     caixa BOOLEAN  NOT NULL,
     administrador BOOLEAN NOT NULL,
-    senha VARCHAR(25) NOT NULL
+    senha VARCHAR(25) NOT NULL 
 );
 --PK
 ALTER TABLE Usuario 
