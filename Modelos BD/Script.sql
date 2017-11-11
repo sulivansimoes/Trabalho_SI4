@@ -1,5 +1,5 @@
 CREATE TABLE Usuario(
-    cpf NUMERIC(11) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
     nome VARCHAR(60) NOT NULL,
     caixa BOOLEAN  NOT NULL,
     administrador BOOLEAN NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE Cabecalho_Venda(
 	forma_pagamento VARCHAR(3) NOT NULL,
 	valor_desconto FLOAT NOT NULL,
 	valor_total FLOAT NOT NULL,
-	cpf_usuario NUMERIC(11) NOT NULL
+	cpf_usuario VARCHAR(11) NOT NULL
 );
 --PK
 ALTER TABLE Cabecalho_Venda

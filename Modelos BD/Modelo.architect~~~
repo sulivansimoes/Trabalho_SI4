@@ -56,7 +56,7 @@ Exemplo: UN = Unidade; CX = Caixa</remarks>
     <column id="COL13" populated="true" UUID="a5788dfb-7792-481c-8adf-a8841328a3a6" autoIncrement="false" autoIncrementSequenceName="Cabecalho_Venda_valor_mercadoria_seq" defaultValue="" name="valor_mercadoria" nullable="0" physicalName="valor_mercadoria" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks>Valor total da mercadoria.</remarks>
     </column>
-    <column id="COL14" populated="true" UUID="eef26427-1000-453f-8431-9c8549290ea0" autoIncrement="false" autoIncrementSequenceName="Usuario_cpf_usuario_seq" defaultValue="" name="cpf_usuario" nullable="0" physicalName="cpf_usuario" precision="11" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+    <column id="COL14" populated="true" UUID="eef26427-1000-453f-8431-9c8549290ea0" autoIncrement="false" autoIncrementSequenceName="Usuario_cpf_usuario_seq" defaultValue="" name="cpf_usuario" nullable="0" physicalName="cpf_usuario" precision="11" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>CPF será id de login do usuario.</remarks>
     </column>
     <column id="COL15" populated="true" UUID="5f43fb11-1b82-47f1-bf37-2a54376b1a13" autoIncrement="false" autoIncrementSequenceName="Cabecalho_Venda_valor_total_seq" defaultValue="" name="valor_total" nullable="0" physicalName="valor_total" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
@@ -122,7 +122,7 @@ Exemplo: UN = Unidade; CX = Caixa</remarks>
   <table id="TAB32" populated="true" UUID="2f967471-60a4-493d-8232-dd33b6adc9fa" name="Usuario" objectType="TABLE" physicalName="Usuario" >
    <remarks></remarks>
    <folder id="FOLTAB321" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL33" populated="true" UUID="e5bb3861-46d2-4d4a-985d-9e6556edf0be" autoIncrement="false" autoIncrementSequenceName="Usuario_cpf_seq_1" defaultValue="" name="cpf" nullable="0" physicalName="cpf" precision="11" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+    <column id="COL33" populated="true" UUID="e5bb3861-46d2-4d4a-985d-9e6556edf0be" autoIncrement="false" autoIncrementSequenceName="Usuario_cpf_seq_1" defaultValue="" name="cpf" nullable="0" physicalName="cpf" precision="11" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>CPF será id de login do usuario.</remarks>
     </column>
     <column id="COL34" populated="true" UUID="8a63d7b3-a9db-4fb1-bfde-5ea9dadc8834" autoIncrement="false" autoIncrementSequenceName="Usuario_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="60" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
