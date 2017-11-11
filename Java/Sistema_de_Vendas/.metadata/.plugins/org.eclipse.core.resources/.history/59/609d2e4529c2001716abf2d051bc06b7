@@ -1,0 +1,7 @@
+package br.edu.univas.si.view.cadastrounidademedida;
+
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class FrameCadastroUnidadeMedida extends MyJFrame {
+
+}

@@ -1,0 +1,36 @@
+package br.edu.univas.si.view.cadastrousuario;
+
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+import br.edu.univas.si.model.to.UsuarioTO;
+
+public class TableModelUsuario extends AbstractTableModel {
+
+	private static final long serialVersionUID = 8563314903799562271L;
+	
+	private ArrayList<UsuarioTO> usuarios;
+	
+	public TableModelUsuario(){
+		usuarios = new ArrayList<UsuarioTO>();
+	}
+
+	@Override
+	public int getRowCount() {
+		return usuarios.size();
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

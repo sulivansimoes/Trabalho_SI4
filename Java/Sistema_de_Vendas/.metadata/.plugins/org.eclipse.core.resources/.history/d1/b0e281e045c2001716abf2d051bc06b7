@@ -1,0 +1,14 @@
+package br.edu.univas.si.view.cadastroproduto;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class TESTE extends MyJFrame {
+
+	
+}
+
+

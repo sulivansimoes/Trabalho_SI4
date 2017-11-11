@@ -1,0 +1,32 @@
+1509639782401	Rename package 'br.edu.univas.si.model.dao.consultas'
+1509639915618	Rename compilation unit 'GridProduto.java'
+1509643657252	Rename package 'br.edu.univas.si.model.dao.relatorios'
+1509644143023	Delete element
+1509644337679	Delete element
+1509645476823	Delete element
+1509647473129	Rename field 'tableGridCadastroProduto'
+1509670157457	Delete element
+1509806164693	Delete element
+1509809518781	Delete element
+1509811060209	Rename type 'ProdutoTableModel'
+1509811085322	Rename type 'TableProduto'
+1509814119692	Rename field 'tabelProduto'
+1509819753660	Delete element
+1509819761674	Delete element
+1509819766408	Delete element
+1509819772944	Delete element
+1509819780461	Delete element
+1509819788506	Delete element
+1509819799041	Delete element
+1509819803848	Delete element
+1509819808604	Delete element
+1509819837929	Delete element
+1509819843818	Delete element
+1509819856423	Delete element
+1509819861508	Delete element
+1509819905593	Delete element
+1509819911023	Delete element
+1509819918852	Delete element
+1509820553111	Rename field 'gerente'
+1509829597956	Rename field 'textFieldQuandiade'
+1509831933203	Rename type 'PanelInclusaoProduto'

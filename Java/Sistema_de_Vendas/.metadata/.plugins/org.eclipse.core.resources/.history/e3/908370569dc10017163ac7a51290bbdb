@@ -1,0 +1,18 @@
+package br.edu.univas.si.view.cadastroproduto;
+
+import javax.swing.JFrame;
+
+public class TESTE extends JFrame {
+
+	public TESTE(){
+	
+		PanelInclusaoProduto p = new  PanelInclusaoProduto();
+		this.add(p);
+	}
+	public static void main(String[] args) {
+		TESTE p = new TESTE();
+		p.setVisible(true);
+	}
+}
+
+

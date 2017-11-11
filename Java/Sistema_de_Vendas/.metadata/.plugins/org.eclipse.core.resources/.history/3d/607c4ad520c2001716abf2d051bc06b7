@@ -1,0 +1,59 @@
+package br.edu.univas.si.view.cadastroproduto;
+
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
+
+import br.edu.univas.si.model.dao.consulta.jtables.GridProdutoDAO;
+import br.edu.univas.si.model.exception.ProdutoException;
+import br.edu.univas.si.view.util.MyColor;
+
+public class PanelTableProduto extends JPanel{
+
+	private static final long serialVersionUID = 1745847296748018092L;
+	
+	private JTable tableProduto;
+	private TableModelProduto tableModelProduto;
+	private JScrollPane scroll;
+	
+	
+	public PanelTableProduto() throws ProdutoException{
+		initialize();
+	}
+	
+	private void initialize() throws ProdutoException{
+		add(getScroll());
+	}
+	
+	private JTable getTableProduto() throws ProdutoException{
+		
+		if(tableProduto==null){
+			tableProduto = new JTable();
+			tableProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			tableProduto.getTableHeader().setBackground(MyColor.SLATE_GRAY1);
+			tableProduto.setModel(getTableModelProduto());
+		}
+		return tableProduto;
+	}
+	private TableModelProduto getTableModelProduto() throws ProdutoException{
+		if(tableModelProduto==null){
+			GridProdutoDAO d = new GridProdutoDAO();
+			tableModelProduto = new TableModelProduto(d.populateGridProduto());
+		}
+		return tableModelProduto;
+	}
+	
+	private JScrollPane getScroll() throws ProdutoException{
+		if(scroll==null){
+			scroll = new JScrollPane(getTableProduto());
+			scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		}
+		return scroll;
+	}
+}

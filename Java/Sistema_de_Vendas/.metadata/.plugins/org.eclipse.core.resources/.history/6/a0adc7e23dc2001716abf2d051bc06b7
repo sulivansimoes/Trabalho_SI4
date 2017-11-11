@@ -1,0 +1,7 @@
+package br.edu.univas.si.view.cadastrousuario;
+
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class FrameCadastroUsuario extends MyJFrame{
+
+}

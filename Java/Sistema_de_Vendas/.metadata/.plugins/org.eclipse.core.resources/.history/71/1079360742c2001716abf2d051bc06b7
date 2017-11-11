@@ -1,0 +1,31 @@
+package br.edu.univas.si.view.cadastrousuario;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class FrameUsuario extends MyJFrame {
+
+	private static final long serialVersionUID = 5515241630872543611L;
+
+	public FrameUsuario(){
+		PanelUsuario usu = new PanelUsuario();
+		ButtonsPanelConfirmaFecha b = new  ButtonsPanelConfirmaFecha();
+		add(b,BorderLayout.NORTH);
+		add(usu, BorderLayout.CENTER);
+				
+	}
+	
+	public static void main(String[] args) {
+		setlookAndFeel(AERO);
+		
+		FrameUsuario t = new FrameUsuario();
+		t.setSize(new  Dimension(400, 400));
+		t.setVisible(true);
+		
+
+	}
+
+}

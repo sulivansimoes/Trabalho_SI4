@@ -1,0 +1,11 @@
+1509129773840	Rename package 'br.edu.univas.si.model.dao'
+1509130237555	Delete element
+1509131129149	Rename package 'br.edu.univas.si.runners.inserts'
+1509131394905	Rename type 'JDBCRunnerInsertBandeiraCartao'
+1509133051401	Rename type 'JDBCRunnerInsertUsuario'
+1509133072522	Rename type 'JDBCRunnerInsertUnidadeMedida'
+1509133091243	Rename type 'JDBCRunnerInsertFornecedor'
+1509136023320	Rename type 'ButtonsLinester'
+1509141141908	Delete element
+1509229187332	Rename field 'fecharButton'
+1509229207045	Rename field 'gbcFecharButton'

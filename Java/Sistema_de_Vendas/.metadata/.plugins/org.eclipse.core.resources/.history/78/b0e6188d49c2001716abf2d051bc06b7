@@ -1,0 +1,14 @@
+package br.edu.univas.si.view.realizarvenda;
+
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+
+public class ButtonsPanelListenersRealizarVendas {
+
+	private JButton buttonFinaliza;
+	private JButton buttonCancela;
+	private JButton buttonAbandona;
+	
+	ArrayList<ButtonsListenersVendas> listeners = new ArrayList<>();
+}

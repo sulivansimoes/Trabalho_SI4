@@ -1,0 +1,25 @@
+package br.edu.univas.si.view.cadastroproduto;
+
+import java.awt.Dimension;
+
+import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class TESTE extends MyJFrame {
+
+	public TESTE(){
+	
+		ButtonsPanelConfirmaFecha b = new ButtonsPanelConfirmaFecha();
+		PanelInclusaoProduto p = new  PanelInclusaoProduto();
+		this.add(b);
+		this.add(p);
+	}
+	public static void main(String[] args) {
+		setlookAndFeel(AERO);
+		TESTE p = new TESTE();
+		p.setSize(new Dimension(300, 300));
+		p.setVisible(true);
+	}
+}
+
+

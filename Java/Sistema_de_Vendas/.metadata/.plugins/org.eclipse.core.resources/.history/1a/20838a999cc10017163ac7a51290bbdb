@@ -1,0 +1,117 @@
+package br.edu.univas.si.view.cadastroproduto;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import br.edu.univas.si.view.util.MyMask;
+
+public class PanelInclusaoProduto extends JPanel{
+
+	private static final long serialVersionUID = -3143617596255316967L;
+	
+	private JLabel labelCodigoDeBarras;
+	private JLabel labelDescricao;
+	private JLabel labelPrecoVenda;
+	private JLabel labelQuantidade;
+	private JLabel labelCodigoUnidadeMedida;
+	
+	private JFormattedTextField textFieldCodigoDeBarras;
+	private JTextField  textFieldDescricao;
+	private JFormattedTextField textFieldPrecoVenda;
+	private JFormattedTextField textFieldQuandiade;
+	private JFormattedTextField textFieldCodigoUnidadeMedida;
+	
+	public PanelInclusaoProduto(){
+		
+		setLayout(new GridLayout(5, 1,10,10));
+		setBorder(new EmptyBorder(50, 50, 50, 50));
+		initialize();
+		
+	}
+	
+	private void initialize(){
+		add(getLabelCodigoDeBarras());
+		add(getTextFieldCodigoDeBarras());
+		
+		add(getLabelDescricao());
+		add(getTextFieldDescricao());
+		
+		add(getLabelCodigoUnidadeMedida());
+		add(getTextFieldCodigoUnidadeMedida());
+		
+		add(getLabelQuantidade());
+		add(getTextFieldQuandiade());
+		
+		add(getLabelPrecoVenda());
+		add(getTextFieldPrecoVenda());
+	}
+	
+	private JLabel getLabelCodigoDeBarras() {
+		if(labelCodigoDeBarras==null){
+			labelCodigoDeBarras = new JLabel("Código de Barras");
+		}
+		return labelCodigoDeBarras;
+	}
+	private JLabel getLabelDescricao() {
+		if(labelDescricao==null){
+			labelDescricao = new JLabel("Descrição");
+		}
+		return labelDescricao;
+	}
+	private JLabel getLabelPrecoVenda() {
+		if(labelPrecoVenda==null){
+			labelPrecoVenda = new JLabel("Preço Venda");
+		}
+		return labelPrecoVenda;
+	}
+	private JLabel getLabelQuantidade() {
+		if(labelQuantidade==null){
+			labelQuantidade = new JLabel("Quantidade Venda");
+		}
+		return labelQuantidade;
+	}
+	private JLabel getLabelCodigoUnidadeMedida() {
+		if(labelCodigoUnidadeMedida==null){
+			labelCodigoUnidadeMedida = new JLabel("Unidade Medida");
+		}
+		return labelCodigoUnidadeMedida;
+	}
+	private JFormattedTextField getTextFieldCodigoDeBarras() {
+		if(textFieldCodigoDeBarras==null){
+			textFieldCodigoDeBarras = new JFormattedTextField();
+			MyMask.maskCodigoBarras(textFieldCodigoDeBarras);
+		}
+		return textFieldCodigoDeBarras;
+	}
+	private JTextField getTextFieldDescricao() {
+		if(textFieldDescricao==null){
+			textFieldDescricao = new JTextField();
+		}
+		return textFieldDescricao;
+	}
+	private JFormattedTextField getTextFieldPrecoVenda() {
+		if(textFieldPrecoVenda==null){
+			textFieldPrecoVenda = new JFormattedTextField();
+			MyMask.maskValorFlutuante(textFieldPrecoVenda);
+		}
+		return textFieldPrecoVenda;
+	}
+	private JFormattedTextField getTextFieldQuandiade() {
+		if(textFieldQuandiade==null){
+			textFieldQuandiade = new JFormattedTextField();
+		}
+		return textFieldQuandiade;
+	}
+	private JFormattedTextField getTextFieldCodigoUnidadeMedida() {
+		if(textFieldCodigoUnidadeMedida==null){
+			textFieldCodigoUnidadeMedida = new JFormattedTextField();
+		}
+		return textFieldCodigoUnidadeMedida;
+	}
+}

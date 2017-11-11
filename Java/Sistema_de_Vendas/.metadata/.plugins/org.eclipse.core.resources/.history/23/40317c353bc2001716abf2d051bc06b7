@@ -1,0 +1,8 @@
+package br.edu.univas.si.view.cadastrousuario;
+
+import javax.swing.JPanel;
+
+public class PanelTableUsuario extends JPanel {
+	
+
+}

@@ -1,0 +1,37 @@
+package br.edu.univas.si.view.cadastrousuario;
+
+import java.awt.Button;
+
+import br.edu.univas.si.view.defaultcomponents.ButtonsPanelCadastro;
+import br.edu.univas.si.view.util.MyJFrame;
+
+public class FrameCadastroUsuario extends MyJFrame{
+
+	private static final long serialVersionUID = -6140725584051515117L;
+	
+	private ButtonsPanelCadastro buttonsPanel;
+	private PanelTableUsuario tableUsuario;
+	
+	public FrameCadastroUsuario(){
+		super("Cadastro usuário");
+		
+		initialize();
+		setExtendedState(MAXIMIZED_BOTH);
+		setLocationRelativeTo(null);
+		pack();
+	}
+	
+	private void initialize(){
+		
+		
+	}
+	
+	private ButtonsPanelCadastro getButtonsPanel(){
+		return buttonsPanel;
+	}
+	
+	private PanelTableUsuario getTableUsuario(){
+		return tableUsuario;
+	}
+
+}
