@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
+import br.edu.univas.si.controller.unidademedida.Controller;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
 import br.edu.univas.si.model.dao.processes.UnidadeMedidaDAO;
 import br.edu.univas.si.model.exception.UnidadeMedidaException;
@@ -18,9 +19,12 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 
 	private PanelUnidadeMedida panelUnidadeMedida;
 	private ButtonsPanelConfirmaFecha buttonsPanel;
+	private Controller controller;
 
-	public FrameIncluirUnidadeMedida() {
+	public FrameIncluirUnidadeMedida(Controller controller) {
 		super("Incluir - Unidade Medida");
+		this.controller = controller;
+		
 		setPreferredSize(new Dimension(700, 270));
 		
 		initialize();
@@ -40,12 +44,12 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 			buttonsPanel.addButtonsListenersConfirmaFecha(new ButtonsListenersConfirmaFecha() {
 				@Override
 				public void fechaPerformed() {
-					fechaCadastro();
+					fechaClicked();
 				}
 
 				@Override
 				public void confirmaPerformed() {
-					cadastraUnidademedida();
+					confirmaClicked();
 				}
 			});
 		}
@@ -59,7 +63,7 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 		return panelUnidadeMedida;
 	}
 	
-	private void cadastraUnidademedida(){
+	private void confirmaClicked(){
 		//Extrai conteudo dos campos.
 		String codigo =  getPanelUnidadeMedida().getTextFieldCodigo().getText();	
 		String descricao = getPanelUnidadeMedida().getTextFieldDescricao().getText();
@@ -70,22 +74,16 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 		}else{
 			//Monta TO
 			UnidadeMedidaTO unidadeMedida = new UnidadeMedidaTO(codigo, descricao);
-			
-			//Chama model direto na view - FIXME: CHAMAR O CONTROLLER NO LUGAR DO MODEL
-			UnidadeMedidaDAO d = new UnidadeMedidaDAO();
-			try {
-				d.insertNewUnidadeMedida(unidadeMedida);
-			} catch (UnidadeMedidaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//Envia TO para controller.	
+			controller.insertUnidadeMedida(unidadeMedida);
+		
 			limpaCampos();
 		}
 	}
 	
 	//Valida o prenchimento dos campos obrigatórios antes de salvar.
 	private boolean validaPreechimento(String codigo, String descricao){
-		if(codigo.isEmpty() || descricao.isEmpty()){
+		if(codigo.trim().isEmpty() || descricao.trim().isEmpty()){
 			return false;
 		}
 		return true;
@@ -96,7 +94,7 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 		getPanelUnidadeMedida().getTextFieldDescricao().setText("");
 	}
 	
-	private void fechaCadastro(){
+	private void fechaClicked(){
 		Object[] opcoes = {"Sim","Não"};
 		int escolha = JOptionPane.showOptionDialog(this, 
 												  "Deseja fechar sem salvar ?", 
@@ -111,12 +109,4 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 				this.dispose();
 		}
 	}
-	
-	// FIXME retirar main
-	public static void main(String[] args) {
-		setlookAndFeel(AERO);
-		FrameIncluirUnidadeMedida t = new FrameIncluirUnidadeMedida();
-		t.setVisible(true);
-	}
-
 }

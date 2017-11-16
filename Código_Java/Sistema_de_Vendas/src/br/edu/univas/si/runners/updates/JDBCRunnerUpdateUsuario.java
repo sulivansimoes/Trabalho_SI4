@@ -10,7 +10,7 @@ public class JDBCRunnerUpdateUsuario {
 	public static void main(String[] args) {
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		UsuarioTO usuarioTO = new  UsuarioTO(1332355522L, "Rafaela", true,false,Encryption.encrypt("rafaelatavares"));
+		UsuarioTO usuarioTO = new  UsuarioTO("1332355522", "Rafaela", true,false,Encryption.encrypt("rafaelatavares"));
 		try {
 			usuarioDAO.updateUsuario(usuarioTO);
 			System.out.println("Alterado com sucesso");

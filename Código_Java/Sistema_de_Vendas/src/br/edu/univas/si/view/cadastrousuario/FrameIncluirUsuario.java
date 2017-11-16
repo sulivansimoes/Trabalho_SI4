@@ -41,12 +41,12 @@ public class FrameIncluirUsuario extends MyJFrame {
 
 				@Override
 				public void fechaPerformed() {
-					fechaCadastro();
+					fechaClicked();
 				}
 
 				@Override
 				public void confirmaPerformed() {
-					cadastraUsuario();
+					confirmaClicked();
 				}
 			});
 		}
@@ -61,7 +61,7 @@ public class FrameIncluirUsuario extends MyJFrame {
 		return panelUsuario;
 	}
 	
-	private void cadastraUsuario(){
+	private void confirmaClicked(){
 		
 		//Extrai conteudo dos campos 
 		String cpf  = getPanelUsuario().getTextFieldCpf().getText().replaceAll("\\D","");		
@@ -92,7 +92,7 @@ public class FrameIncluirUsuario extends MyJFrame {
 	
 	//Verifica se campos obrigatórios foram preenchidos antes de tentar salvar.
 	private boolean validaPreechimento(String cpf, String nome, String senha){
-		if(cpf.isEmpty() || nome.isEmpty() || senha.isEmpty()){ 
+		if(cpf.trim().isEmpty() || nome.trim().isEmpty() || senha.trim().isEmpty()){ 
 			return false;
 		}
 		return true;
@@ -106,7 +106,7 @@ public class FrameIncluirUsuario extends MyJFrame {
 		getPanelUsuario().getTextFieldsenha().setText("");	
 	}
 	
-	private void fechaCadastro(){
+	private void fechaClicked(){
 		Object[] opcoes = {"Sim","Não"};
 		int escolha = JOptionPane.showOptionDialog(this, 
 												   "Deseja fechar sem salvar ?", 

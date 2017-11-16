@@ -8,7 +8,7 @@ public class JDBCRunnerDeleteUsuario {
 	public static void main(String[] args) {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		try {
-			usuarioDAO.deleteUsuario(132322L);
+			usuarioDAO.deleteUsuario("132322");
 			System.out.println("Deletado com sucesso");
 		} catch (UsuarioException e) {
 			e.printStackTrace();

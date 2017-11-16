@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import br.edu.univas.si.listeners.ButtonsListenersVendas;
 import br.edu.univas.si.view.util.MyColor;
 
-public class ButtonsPanelListenersVendas extends JPanel {
+public class ButtonsPanelVendas extends JPanel {
 
 	private static final long serialVersionUID = -6403228859985244533L;
 	
@@ -24,9 +25,10 @@ public class ButtonsPanelListenersVendas extends JPanel {
 	private ArrayList<ButtonsListenersVendas> listeners = new ArrayList<>();
 	
 	
-	public ButtonsPanelListenersVendas(){
+	public ButtonsPanelVendas(){
 		setLayout(new FlowLayout());
 		initialize();
+		setBorder(new EmptyBorder(30, 50, 30, 30));
 	}
 	
 	private void initialize(){
@@ -39,8 +41,8 @@ public class ButtonsPanelListenersVendas extends JPanel {
 		if(buttonFinaliza==null){
 			buttonFinaliza = new JButton("Finaliza Venda");
 			buttonFinaliza.setFont(new Font("Century",Font.PLAIN,14));
-			buttonFinaliza.setBackground(MyColor.SKY_BLUE2);
-			buttonFinaliza.setPreferredSize(new Dimension(100, 40));
+			buttonFinaliza.setBackground(MyColor.DEEP_SKY_BLUE);
+			buttonFinaliza.setPreferredSize(new Dimension(140, 40));
 			buttonFinaliza.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -55,7 +57,7 @@ public class ButtonsPanelListenersVendas extends JPanel {
 			buttonCancela = new JButton("Cancela Venda");
 			buttonCancela.setFont(new Font("Century",Font.PLAIN,14));
 			buttonCancela.setBackground(MyColor.WHITE_SMOKE);
-			buttonCancela.setPreferredSize(new Dimension(100, 40));
+			buttonCancela.setPreferredSize(new Dimension(140, 40));
 			buttonCancela.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -70,7 +72,7 @@ public class ButtonsPanelListenersVendas extends JPanel {
 			buttonAbandona = new JButton("Abandona Venda");
 			buttonAbandona.setFont(new Font("Century",Font.PLAIN,14));
 			buttonAbandona.setBackground(MyColor.WHITE_SMOKE);
-			buttonAbandona.setPreferredSize(new Dimension(100, 40));
+			buttonAbandona.setPreferredSize(new Dimension(160, 40));
 			buttonAbandona.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

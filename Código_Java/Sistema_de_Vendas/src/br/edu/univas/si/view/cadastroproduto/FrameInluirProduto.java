@@ -44,12 +44,12 @@ public class FrameInluirProduto extends MyJFrame {
 			buttonsPanel.addButtonsListenersConfirmaFecha(new ButtonsListenersConfirmaFecha() {
 				@Override
 				public void fechaPerformed() {
-					fechaCadastro();
+					fechaClicked();
 				}
 
 				@Override
 				public void confirmaPerformed() {
-					cadastraProduto();
+					confirmaClicked();
 				}
 			});
 		}
@@ -63,7 +63,7 @@ public class FrameInluirProduto extends MyJFrame {
 		return panelProduto;
 	}
 	
-	private void cadastraProduto(){
+	private void confirmaClicked(){
 		//Extrai conteudo dos campos. 
 		long codigoDeBarras =  Long.valueOf(getPanelProduto().getTextFieldCodigoDeBarras().getText().trim().isEmpty() ? 
 											"0" : getPanelProduto().getTextFieldCodigoDeBarras().getText().trim() );
@@ -113,7 +113,7 @@ public class FrameInluirProduto extends MyJFrame {
 		getPanelProduto().getTextFieldCodigoUnidadeMedida().setText("");
 	}
 	
-	private void fechaCadastro(){
+	private void fechaClicked(){
 		Object[] opcoes = {"Sim","Não"};
 		int escolha = JOptionPane.showOptionDialog(this, 
 												  "Deseja fechar sem salvar ?", 
