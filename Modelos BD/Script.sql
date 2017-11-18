@@ -36,9 +36,6 @@ CREATE TABLE Cabecalho_Venda(
 	numero_cupom NUMERIC(6) NOT NULL,
 	serie_cupom VARCHAR(3) NOT NULL,
 	data_emissao DATE NOT NULL,
-	valor_mercadoria FLOAT NOT NULL,
-	forma_pagamento VARCHAR(3) NOT NULL,
-	valor_desconto FLOAT NOT NULL,
 	valor_total FLOAT NOT NULL,
 	cpf_usuario VARCHAR(11) NOT NULL
 );
