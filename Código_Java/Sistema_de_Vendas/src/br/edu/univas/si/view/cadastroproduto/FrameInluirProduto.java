@@ -5,9 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
+import br.edu.univas.si.controller.produto.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
-import br.edu.univas.si.model.dao.processes.ProdutoDAO;
-import br.edu.univas.si.model.exception.ProdutoException;
 import br.edu.univas.si.model.to.ProdutoTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
@@ -22,9 +21,11 @@ public class FrameInluirProduto extends MyJFrame {
 
 	private ButtonsPanelConfirmaFecha buttonsPanel;
 	private PanelProduto panelProduto;
+	private ControllerIncluir controller;
 
-	public FrameInluirProduto() {
+	public FrameInluirProduto(ControllerIncluir controller) {
 		super("Incluir - Produto");
+		this.controller = controller;
 		setPreferredSize(new Dimension(800, 380));
 
 		initialize();
@@ -74,7 +75,7 @@ public class FrameInluirProduto extends MyJFrame {
 		float quantidade = Float.valueOf(getPanelProduto().getTextFieldQuantidade().getText().isEmpty() ? 
 										"0" : getPanelProduto().getTextFieldQuantidade().getText());
 		
-		String descricao = getPanelProduto().getTextFieldDescricao().getText();
+		String descricao = getPanelProduto().getTextFieldDescricao().getText().trim();
 		String codigoUnidadeMedida = getPanelProduto().getTextFieldCodigoUnidadeMedida().getText(); 
 		
 		if(! validaPreenchimento(codigoDeBarras, descricao, precoVenda, quantidade, codigoUnidadeMedida)){
@@ -83,15 +84,9 @@ public class FrameInluirProduto extends MyJFrame {
 		}else{
 			//Monta TO
 			ProdutoTO produto = new ProdutoTO(codigoDeBarras, descricao, precoVenda, quantidade ,codigoUnidadeMedida);
+			//Manda TO para controller.
+			controller.insertProduto(produto);		
 			
-			//Chama model direto na view - FIXME: CHAMAR O CONTROLLER NO LUGAR DO MODEL
-			ProdutoDAO d = new ProdutoDAO();
-			try {
-				d.insertNewProduto(produto);
-			} catch (ProdutoException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			limpaCampos();
 		}
 	}
@@ -127,12 +122,5 @@ public class FrameInluirProduto extends MyJFrame {
 		if(escolha==0){ //Sim
 				this.dispose();
 		}
-	}
-	
-	//FIXME retirar main
-	public static void main(String[] args) {
-		setlookAndFeel(AERO);
-		FrameInluirProduto p = new FrameInluirProduto();
-		p.setVisible(true);
 	}
 }

@@ -2,6 +2,8 @@ package br.edu.univas.si.view.cadastrounidademedida;
 
 import java.awt.BorderLayout;
 
+import br.edu.univas.si.controller.unidademedida.ControllerAlterar;
+import br.edu.univas.si.controller.unidademedida.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersCadastro;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelCadastro;
 import br.edu.univas.si.view.util.MyJFrame;
@@ -12,6 +14,8 @@ public class FramePrincipalUnidadeMedida extends MyJFrame {
 
 	private ButtonsPanelCadastro buttonsPanel;
 	private PanelTableUnidadeMedida tableUnidadeMedia;
+	private ControllerIncluir controllerIncluir;
+	private ControllerAlterar controllerAlterar;
 
 	public FramePrincipalUnidadeMedida() {
 		super("Cadastro Unidade Medida");
@@ -40,7 +44,7 @@ public class FramePrincipalUnidadeMedida extends MyJFrame {
 
 				@Override
 				public void excluiPerformed() {
-					// TODO implements
+					excluiClicked();
 
 				}
 
@@ -52,7 +56,7 @@ public class FramePrincipalUnidadeMedida extends MyJFrame {
 
 				@Override
 				public void SairPerformed() {
-					// TODO implements
+					sairClicked();
 
 				}
 			});
@@ -68,12 +72,25 @@ public class FramePrincipalUnidadeMedida extends MyJFrame {
 	}
 	
 	private void incluiClicked(){
-		//TODO: Ver como se chama FrameIncluirUnidade. 
+		controllerIncluir = new ControllerIncluir();
+		controllerIncluir.initialize();
+		//TODO 
 	}
 	
 	private void alteraClicked(){
-		//TODO: Ver a maneira correta de se fazer o procedimento de chamar o FrameIncluirUnidade.
-		
+		controllerAlterar = new ControllerAlterar();
+		controllerAlterar.initialize();
+	}
+	
+	private void excluiClicked(){
+		//TODO implements.   
+	}
+	
+	private void sairClicked(){
+		if(controllerIncluir!=null){
+			controllerIncluir.close();
+		}
+		this.dispose();
 	}
 	
 	public static void main(String[] args) {

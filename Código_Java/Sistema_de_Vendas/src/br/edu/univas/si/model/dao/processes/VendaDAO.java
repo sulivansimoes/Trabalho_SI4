@@ -3,6 +3,8 @@ package br.edu.univas.si.model.dao.processes;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import br.edu.univas.si.model.exception.VendaException;
 import br.edu.univas.si.model.to.CabecalhoVendaTO;
@@ -15,7 +17,7 @@ import br.edu.univas.si.model.util.DBUtil;
  */
 public class VendaDAO {
 
-	public void insertNewVenda(CabecalhoVendaTO cabecalho, /*ArrayList<ItensVendaTO>*/ItensVendaTO itens) throws VendaException{ //FIXME itens deve ser um array
+	public void insertNewVenda(CabecalhoVendaTO cabecalho, ArrayList<ItensVendaTO> itens) throws VendaException{
 		
 		String sqlCabecalho = "INSERT INTO Cabecalho_Venda"
 							+ " (numero_cupom, serie_cupom, data_emissao, valor_mercadoria, "
@@ -36,22 +38,22 @@ public class VendaDAO {
 				
 				statementCabecalho.setInt	(1, cabecalho.getNumeroCupom());
 				statementCabecalho.setString(2, cabecalho.getSerieCupom());
-				statementCabecalho.setDate	(3, (Date) cabecalho.getDataEmissao());
+			//	statementCabecalho.setTimestamp(3, cabecalho.getDataEmissao().getTime()); FIXME: FAZER TRATAMENTO CORRETO.
 				statementCabecalho.setString	(6, cabecalho.getCpfUsuario());
 				statementCabecalho.setFloat	(8, cabecalho.getValorTotal());
 				statementCabecalho.execute();
 				
-				//FIXME colocar dentro de um for
-				statementItens.setInt	(1, itens.getNumeroCupom());
-				statementItens.setString(2, itens.getSerieCupom());
-				statementItens.setInt	(3, itens.getItem());
-				statementItens.setLong	(4, itens.getCodigoDeBarras());
-				statementItens.setFloat	(5, itens.getQuantidade());
-				statementItens.setFloat	(6, itens.getQuantidade());
-				statementItens.setFloat	(7, itens.getValorUnitario());
-				statementItens.setFloat	(8, itens.getValorVenda());
-				statementItens.setString(9, itens.getCodigoUnidadeMedida());
-				statementItens.execute();
+				for(ItensVendaTO item : itens){
+					statementItens.setInt	(1, item.getNumeroCupom());
+					statementItens.setString(2, item.getSerieCupom());
+					statementItens.setInt	(3, item.getItem());
+					statementItens.setLong	(4, item.getCodigoDeBarras());
+					statementItens.setFloat	(6, item.getQuantidade());
+					statementItens.setFloat	(7, item.getValorUnitario());
+					statementItens.setFloat	(8, item.getValorVenda());
+					statementItens.setString(9, item.getCodigoUnidadeMedida());
+					statementItens.execute();
+				}
 					
 		}catch (Exception e){
 			throw new VendaException("Erro ao tentar gravar a venda: "+cabecalho.getNumeroCupom()+"\n"

@@ -6,12 +6,12 @@ import br.edu.univas.si.model.to.UnidadeMedidaTO;
 import br.edu.univas.si.view.cadastrounidademedida.FrameIncluirUnidadeMedida;
 import br.edu.univas.si.view.util.MyJFrame;
 
-public class Controller {
+public class ControllerIncluir {
 
 	private UnidadeMedidaDAO modelUnidadeMedida;
 	private FrameIncluirUnidadeMedida viewUnidadeMedida;
 	
-	public Controller() {
+	public ControllerIncluir() {
 		MyJFrame.setlookAndFeel(MyJFrame.AERO);
 		this.viewUnidadeMedida = new FrameIncluirUnidadeMedida(this);
 		this.modelUnidadeMedida = new UnidadeMedidaDAO();
@@ -19,6 +19,10 @@ public class Controller {
 	
 	public  void initialize(){
 		this.viewUnidadeMedida.setVisible(true);
+	}
+	
+	public void close(){
+		viewUnidadeMedida.dispose();
 	}
 	
 	//Inclui registro no banco.
@@ -29,6 +33,4 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }

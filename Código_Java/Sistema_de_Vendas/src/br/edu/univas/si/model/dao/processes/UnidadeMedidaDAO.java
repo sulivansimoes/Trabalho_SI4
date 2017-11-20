@@ -85,6 +85,5 @@ public class UnidadeMedidaDAO {
 		}finally {
 			DBUtil.closeConnection(connection);
 		}
-		
 	}
 }

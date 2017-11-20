@@ -71,5 +71,4 @@ public class TableModelUnidadeMedida extends AbstractTableModel{
 					throw new IndexOutOfBoundsException("columnIndex out of bounds");
 			}
 	}
-
 }

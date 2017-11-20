@@ -3,9 +3,10 @@ package br.edu.univas.si.view.login;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.JOptionPane;
-
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
+import br.edu.univas.si.model.dao.processes.UsuarioDAO;
+import br.edu.univas.si.model.exception.UsuarioException;
+import br.edu.univas.si.model.to.UsuarioTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
 
@@ -60,12 +61,25 @@ public class FrameLogin extends MyJFrame {
 	}
 	
 	private void fechaClicked(){
-		JOptionPane.showMessageDialog( this,"Cancelou login");
 		System.exit(0);
 	}
 	
 	private void confirmaClicked(){
-		JOptionPane.showMessageDialog(this, "Tentou login");
+		//Extrai conteudo de campos.
+		String cpf = this.getPanelLogin().getTextFieldUser().getText().replaceAll("\\D","");
+		String senha = new String(this.getPanelLogin().getTextFieldSenha().getPassword());
+		//Monta TO
+		UsuarioTO usuario = new UsuarioTO();
+		usuario.setCpf(cpf);
+		usuario.setSenha(senha);
+		//Chama controller passando TO FIXME: CHAMAR O CONTROLLER AO INVÉS DA DO MODEL DIRETO.
+		UsuarioDAO d = new UsuarioDAO();
+		try {
+			d.autentifica(usuario);
+		} catch (UsuarioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {//TODO RETIRAR

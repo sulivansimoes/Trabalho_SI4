@@ -5,7 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
-import br.edu.univas.si.controller.unidademedida.Controller;
+import br.edu.univas.si.controller.unidademedida.ControllerAlterar;
+import br.edu.univas.si.controller.unidademedida.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
@@ -16,8 +17,9 @@ public class FrameAlterarUnidadeMedida extends MyJFrame{
 	
 	private ButtonsPanelConfirmaFecha buttons;
 	private PanelUnidadeMedida panelUnidadeMedida;
+	private ControllerAlterar controller;
 	
-	public FrameAlterarUnidadeMedida(Controller controller){
+	public FrameAlterarUnidadeMedida(ControllerAlterar controller){
 		super("Alterar - Unidade Medida");
 	
 		setPreferredSize(new Dimension(700, 270));
@@ -55,14 +57,15 @@ public class FrameAlterarUnidadeMedida extends MyJFrame{
 		if(panelUnidadeMedida==null){
 			panelUnidadeMedida = new PanelUnidadeMedida();
 			panelUnidadeMedida.getTextFieldCodigo().setEditable(false);
-			//Carregar a as informações do cadastro no Panel.
-			//TODO
+			//popular panel com informações do banco.
+			
 		}
 		return panelUnidadeMedida;
 	}
 	
 	private void confirmaClicked(){
-		//TODO implements
+		//TODO implements - Pegar dados da linha selecionada do JTable e montar um TO.
+		//controller.updateUnidadeMedida(unidade);
 	}	
 	
 	private void fechaClicked(){
@@ -79,13 +82,5 @@ public class FrameAlterarUnidadeMedida extends MyJFrame{
 		if(escolha==0){ //Sim
 				this.dispose();
 		}
-	}
-	
-	
-	//TODO retirar
-	public static void main(String[] args) {
-		setlookAndFeel(AERO);
-		FrameAlterarUnidadeMedida f = new FrameAlterarUnidadeMedida();
-		f.setVisible(true);
 	}
 }

@@ -10,6 +10,9 @@ public class UsuarioTO {
 	private boolean admnistrador;
 	private String senha;
 	
+	public UsuarioTO(){	
+	}
+	
 	public UsuarioTO(String cpf, String nome, boolean caixa, boolean administrador, String senha){
 		this.cpf = cpf;
 		this.nome = nome;
@@ -58,10 +61,10 @@ public class UsuarioTO {
 	}
 
 	public String getSenha() {
-		return senha;
+		return Encryption.encrypt(senha);
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = Encryption.encrypt(senha);
 	}
 }

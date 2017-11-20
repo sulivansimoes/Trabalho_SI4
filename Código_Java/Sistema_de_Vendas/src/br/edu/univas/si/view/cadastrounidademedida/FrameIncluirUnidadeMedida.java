@@ -5,10 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
-import br.edu.univas.si.controller.unidademedida.Controller;
+import br.edu.univas.si.controller.unidademedida.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
-import br.edu.univas.si.model.dao.processes.UnidadeMedidaDAO;
-import br.edu.univas.si.model.exception.UnidadeMedidaException;
 import br.edu.univas.si.model.to.UnidadeMedidaTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
@@ -19,9 +17,9 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 
 	private PanelUnidadeMedida panelUnidadeMedida;
 	private ButtonsPanelConfirmaFecha buttonsPanel;
-	private Controller controller;
+	private ControllerIncluir controller;
 
-	public FrameIncluirUnidadeMedida(Controller controller) {
+	public FrameIncluirUnidadeMedida(ControllerIncluir controller) {
 		super("Incluir - Unidade Medida");
 		this.controller = controller;
 		
@@ -66,17 +64,19 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 	private void confirmaClicked(){
 		//Extrai conteudo dos campos.
 		String codigo =  getPanelUnidadeMedida().getTextFieldCodigo().getText();	
-		String descricao = getPanelUnidadeMedida().getTextFieldDescricao().getText();
+		String descricao = getPanelUnidadeMedida().getTextFieldDescricao().getText().trim();
 		
 		if(! validaPreechimento(codigo, descricao)){
 			JOptionPane.showMessageDialog(this, "Campos com asterisco ( * ) são de prechimento obrigatório. Preencha os "
-										 + "campos obrigatórios antes de salvar.");
+										 + "campos obrigatórios antes de salvar.","Problema",JOptionPane.ERROR_MESSAGE);
 		}else{
 			//Monta TO
 			UnidadeMedidaTO unidadeMedida = new UnidadeMedidaTO(codigo, descricao);
 			//Envia TO para controller.	
 			controller.insertUnidadeMedida(unidadeMedida);
-		
+			//Atualiza grid do frame principal.
+			//TODO
+			
 			limpaCampos();
 		}
 	}

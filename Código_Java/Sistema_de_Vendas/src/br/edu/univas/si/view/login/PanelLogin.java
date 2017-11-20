@@ -45,7 +45,7 @@ public class PanelLogin extends JPanel{
 		return labelUser;
 	}
 	
-	private JFormattedTextField getTextFieldUser() {
+	public JFormattedTextField getTextFieldUser() {
 		if(textFieldUser==null){
 			textFieldUser = new JFormattedTextField();
 			MyMask.maskCpf(textFieldUser);
@@ -61,7 +61,7 @@ public class PanelLogin extends JPanel{
 		return labelSenha;
 	}
 
-	private JPasswordField getTextFieldSenha() {
+	public JPasswordField getTextFieldSenha() {
 		if(textFieldSenha==null){
 			textFieldSenha = new JPasswordField();
 			textFieldSenha.setColumns(20);

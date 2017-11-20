@@ -5,9 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
+import br.edu.univas.si.controller.usuario.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
-import br.edu.univas.si.model.dao.processes.UsuarioDAO;
-import br.edu.univas.si.model.exception.UsuarioException;
 import br.edu.univas.si.model.to.UsuarioTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
@@ -18,9 +17,11 @@ public class FrameIncluirUsuario extends MyJFrame {
 
 	private PanelUsuario panelUsuario;
 	private ButtonsPanelConfirmaFecha buttonsConfirmaFecha;
+	private ControllerIncluir controller;
 
-	public FrameIncluirUsuario() {
+	public FrameIncluirUsuario(ControllerIncluir controller) {
 		super("Incluir - Usuário");
+		this.controller = controller;
 		setPreferredSize(new Dimension(700, 400));
 		
 		initialize();
@@ -65,10 +66,10 @@ public class FrameIncluirUsuario extends MyJFrame {
 		
 		//Extrai conteudo dos campos 
 		String cpf  = getPanelUsuario().getTextFieldCpf().getText().replaceAll("\\D","");		
-		String nome = getPanelUsuario().getTextFieldNome().getText();
+		String nome = getPanelUsuario().getTextFieldNome().getText().trim();
 		boolean caixa = getPanelUsuario().getCheckBoxCaixa().isSelected();
 		boolean admnistrador =  getPanelUsuario().getCheckBoxAdminstrador().isSelected();
-		String senha = new String(getPanelUsuario().getTextFieldsenha().getPassword());
+		String senha = new String(getPanelUsuario().getTextFieldsenha().getPassword()).trim();
 		
 		if(! validaPreechimento(cpf, nome, senha)){
 			JOptionPane.showMessageDialog(this, "Campos com asterisco ( * ) são de prechimento obrigatório. Preencha os "
@@ -76,15 +77,8 @@ public class FrameIncluirUsuario extends MyJFrame {
 		}else{		
 			//Monta TO
 			UsuarioTO usuario = new UsuarioTO(cpf, nome, caixa, admnistrador, senha);
-			
-			//Chama model direto na view - FIXME: CHAMAR O CONTROLLER NO LUGAR DO MODEL
-			UsuarioDAO d = new UsuarioDAO();
-			try {
-				d.insertNewUsuario(usuario);
-			} catch (UsuarioException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//Manda TO para controller.
+			controller.insertUsuario(usuario);
 			
 			limpaCampos();
 		}
@@ -120,15 +114,4 @@ public class FrameIncluirUsuario extends MyJFrame {
 				this.dispose();
 		}
 	}
-
-	// FIXME retirar main
-	public static void main(String[] args) {
-		setlookAndFeel(AERO);
-
-		FrameIncluirUsuario t = new FrameIncluirUsuario();
-	//	t.setSize(new Dimension(400, 400));
-		t.setVisible(true);
-
-	}
-
 }

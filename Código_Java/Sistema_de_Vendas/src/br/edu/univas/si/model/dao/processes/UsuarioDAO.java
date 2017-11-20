@@ -2,13 +2,15 @@ package br.edu.univas.si.model.dao.processes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import br.edu.univas.si.model.exception.UsuarioException;
 import br.edu.univas.si.model.to.UsuarioTO;
 import br.edu.univas.si.model.util.DBUtil;
+import br.edu.univas.si.model.util.Encryption;
 
 /**
- * Summary: Classe contém métodos responsáveis por Inserir, deletar e alterar cadastro de Usuario no banco de dados 
+ * Summary: Classe contém métodos responsáveis por autenfificar login, Inserir, deletar e alterar cadastro de Usuario no banco de dados 
  * @author Súlivan Simões Silva
  */
 public class UsuarioDAO {
@@ -91,5 +93,53 @@ public class UsuarioDAO {
 			DBUtil.closeConnection(connection);
 		}
 	}
-
+	
+	public boolean autentifica(UsuarioTO usuario) throws UsuarioException{
+		
+		UsuarioTO user =  searchUser(usuario.getCpf());
+		
+		if(usuario.getCpf().equals("00000000000") && usuario.getSenha().equals(Encryption.encrypt("admin")) ){
+			return true;
+		}		
+		
+		//Demais usuarios
+		if(user==null){
+			return false;
+		}else if(usuario.getCpf().equals(user.getCpf()) && usuario.getSenha().equals(user.getSenha())){ 
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	private UsuarioTO searchUser(String cpf) throws UsuarioException{
+		
+		String sql = "SELECT CPF, SENHA FROM USUARIO"
+				   + "WHERE CPF = ?";
+		
+		Connection connection = null;
+		try{
+				connection = DBUtil.openConnection();
+				PreparedStatement statement = connection.prepareStatement(sql);
+				
+				statement.setString(1, cpf);
+				
+				ResultSet rs = statement.executeQuery();
+				
+				if(rs.next()){
+					UsuarioTO user = new UsuarioTO();
+					user.setCpf(rs.getString(1));
+					user.setSenha(rs.getString(2));
+					return user;
+				}
+				
+		}catch(Exception e){
+			new UsuarioException("Erro ao fazer consulta do usuario em Class.UsuarioDAO - searchUser() \n"+e);
+		}finally{
+			DBUtil.closeConnection(connection);
+		}
+		
+		return null ;
+	}
 }

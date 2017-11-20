@@ -45,7 +45,7 @@ public class FrameVenda extends MyJFrame{
 				
 				@Override
 				public void abandonaPerformed() {
-					// TODO implements
+					abandonaClicked();
 					
 				}
 			});
