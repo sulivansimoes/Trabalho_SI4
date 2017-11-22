@@ -18,7 +18,7 @@ ALTER TABLE Unidade_Medida
 		ADD CONSTRAINT unidade_medida_pk PRIMARY KEY (codigo);
         
 CREATE TABLE Produto(
-    codigo_de_barras NUMERIC(20) NOT NULL,
+    codigo_de_barras VARCHAR(20) NOT NULL,
     descricao VARCHAR(60) NOT NULL,
     preco_venda FLOAT NOT NULL,
     quantidade FLOAT NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE Itens_Venda(
 	numero_cupom NUMERIC(6) NOT NULL,
 	serie_cupom VARCHAR(3) NOT NULL,
 	item NUMERIC(3) NOT NULL,
-	codigo_de_barras NUMERIC(20),
+	codigo_de_barras VARCHAR(20),
 	quantidade FLOAT NOT NULL,
 	valor_unitario FLOAT NOT NULL,
 	valor_venda FLOAT NOT NULL,

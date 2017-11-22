@@ -13,7 +13,7 @@
   <table id="TAB1" populated="true" UUID="8a3ca444-da71-4b66-92f8-d06e44e38bbb" name="Produto" objectType="TABLE" physicalName="Produto" >
    <remarks></remarks>
    <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL2" populated="true" UUID="8c00de87-70dc-4762-8db8-c7278337e09d" autoIncrement="false" autoIncrementSequenceName="Produto_codigo_de_barras_seq" defaultValue="" name="codigo_de_barras" nullable="0" physicalName="codigo_de_barras" precision="20" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+    <column id="COL2" populated="true" UUID="8c00de87-70dc-4762-8db8-c7278337e09d" autoIncrement="false" autoIncrementSequenceName="Produto_codigo_de_barras_seq" defaultValue="" name="codigo_de_barras" nullable="0" physicalName="codigo_de_barras" precision="20" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL3" populated="true" UUID="11f58a3c-441c-4160-8a56-de2c0d408253" autoIncrement="false" autoIncrementSequenceName="Produto_descricao_seq" defaultValue="" name="descricao" nullable="0" physicalName="descricao" precision="60" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -85,7 +85,7 @@ valor_mercadoria - valor_desconto = valor_total</remarks>
     <column id="COL21" populated="true" UUID="2214e31a-d986-4d02-bb61-2e6f1068a1ec" autoIncrement="true" autoIncrementSequenceName="Itens_Venda_item_seq" defaultValue="" name="item" nullable="0" physicalName="item" precision="3" primaryKeySeq="2" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
      <remarks>Item sequencial da venda.</remarks>
     </column>
-    <column id="COL22" populated="true" UUID="b1545104-1f48-4bcf-b102-68a40f3a8ec6" autoIncrement="false" autoIncrementSequenceName="Produto_codigo_de_barras_seq_1" defaultValue="" name="codigo_de_barras" nullable="0" physicalName="codigo_de_barras" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+    <column id="COL22" populated="true" UUID="b1545104-1f48-4bcf-b102-68a40f3a8ec6" autoIncrement="false" autoIncrementSequenceName="Produto_codigo_de_barras_seq_1" defaultValue="" name="codigo_de_barras" nullable="0" physicalName="codigo_de_barras" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL23" populated="true" UUID="6373c1aa-1b0d-4768-ac6b-4d0174d69a4c" autoIncrement="false" autoIncrementSequenceName="Itens_Venda_quantidade_seq" defaultValue="" name="quantidade" nullable="0" physicalName="quantidade" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
