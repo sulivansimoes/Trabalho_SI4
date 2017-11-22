@@ -1,13 +1,14 @@
 package br.edu.univas.si.view.cadastrounidademedida;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
-import br.edu.univas.si.model.dao.consulta.jtables.GridUnidadeMedidaDAO;
-import br.edu.univas.si.model.exception.UnidadeMedidaException;
+import br.edu.univas.si.controller.unidademedida.ControllerConsulta;
 import br.edu.univas.si.view.util.MyColor;
 
 public class PanelTableUnidadeMedida extends JPanel {
@@ -15,10 +16,10 @@ public class PanelTableUnidadeMedida extends JPanel {
 	private static final long serialVersionUID = 6444281616435672861L;
 
 	private JTable tableUnidadeMedida;
-	private TableModelUnidadeMedida tableModelUnidadeMedida;
 	private JScrollPane scroll;
 
 	public PanelTableUnidadeMedida() {
+		setLayout(new BorderLayout());
 		initialize();
 	}
 	
@@ -31,21 +32,9 @@ public class PanelTableUnidadeMedida extends JPanel {
 			tableUnidadeMedida = new JTable();
 			tableUnidadeMedida.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			tableUnidadeMedida.getTableHeader().setBackground(MyColor.DEEP_SKY_BLUE);
-			tableUnidadeMedida.setModel(getTableModelUnidadeMedida());
+			tableUnidadeMedida.setModel(new ControllerConsulta().searchUnidadeMedida() );
 		}
 		return tableUnidadeMedida;
-	}
-
-	private TableModelUnidadeMedida getTableModelUnidadeMedida(){
-		if(tableModelUnidadeMedida==null){
-			GridUnidadeMedidaDAO data = new GridUnidadeMedidaDAO();
-				try {
-					tableModelUnidadeMedida= new TableModelUnidadeMedida(data.populateGridUnidadeMedida());
-				} catch (UnidadeMedidaException e) {
-					e.printStackTrace();
-				}
-		}
-		return tableModelUnidadeMedida;
 	}
 
 	private JScrollPane getScroll() {
@@ -55,5 +44,9 @@ public class PanelTableUnidadeMedida extends JPanel {
 			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		}
 		return scroll;
+	}
+	
+	public JTable getTable(){
+		return getTableUnidadeMedida();
 	}
 }

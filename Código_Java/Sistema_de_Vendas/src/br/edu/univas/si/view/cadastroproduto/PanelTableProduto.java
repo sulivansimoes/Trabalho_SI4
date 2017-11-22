@@ -1,5 +1,7 @@
 package br.edu.univas.si.view.cadastroproduto;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -8,6 +10,7 @@ import javax.swing.ScrollPaneConstants;
 
 import br.edu.univas.si.model.dao.consulta.jtables.GridProdutoDAO;
 import br.edu.univas.si.model.exception.ProdutoException;
+import br.edu.univas.si.model.tablemodel.TableModelProduto;
 import br.edu.univas.si.view.util.MyColor;
 
 /**
@@ -28,6 +31,7 @@ public class PanelTableProduto extends JPanel{
 	}
 	
 	private void initialize() throws ProdutoException{
+		setLayout(new  BorderLayout());
 		add(getScroll());
 	}
 	

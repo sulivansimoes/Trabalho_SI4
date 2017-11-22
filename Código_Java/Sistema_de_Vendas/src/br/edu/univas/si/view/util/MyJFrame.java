@@ -42,7 +42,7 @@ public class MyJFrame extends JFrame{
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(MyJFrame.class.getResource("/br/edu/univas/si/view/imagens/pdv.png")));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+		
 	public final static void setlookAndFeel(String look){
 	     try {
 	    	 UIManager.setLookAndFeel(look);		//Passando o look and feel ex: com.sun.java.swing.plaf.windows.WindowsLookAndFeel

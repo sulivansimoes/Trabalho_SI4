@@ -1,4 +1,4 @@
-package br.edu.univas.si.view.cadastrounidademedida;
+package br.edu.univas.si.model.tablemodel;
 
 import java.util.ArrayList;
 
@@ -70,5 +70,51 @@ public class TableModelUnidadeMedida extends AbstractTableModel{
 				default :
 					throw new IndexOutOfBoundsException("columnIndex out of bounds");
 			}
+	}
+	
+	//Retorna Usuario da linha especificada
+	public UnidadeMedidaTO getUnidadeMedida(int indiceLinha){
+		return unidadeMedida.get(indiceLinha);
+	}
+	
+	//Adiciona o usuario especificado no model
+	public void addUnidadeMedida(UnidadeMedidaTO unidade){
+		unidadeMedida.add(unidade);
+		
+		//Pega a quantidade de registros e subtrai 1 para achar o último índice.
+	    int ultimoIndice = getRowCount() - 1;
+		 
+	    // Notifica a mudança.
+	    fireTableRowsInserted(ultimoIndice, ultimoIndice);
+	}
+		
+	public void removeUnidadeMedida(int indiceLinha){
+		//Remove  o registro
+		unidadeMedida.remove(indiceLinha);
+		
+		//Notifica mudança ao model
+		fireTableRowsDeleted(indiceLinha, indiceLinha);
+	}
+		
+	// Adiciona uma lista de sócios no final da lista.
+	public void addListaDeUnidadesDeMedida(ArrayList<UnidadeMedidaTO> listaUnidadeMedida) {
+	    // Pega o tamanho antigo da tabela, que servirá
+	    // como índice para o primeiro dos novos registros
+	    int indice = getRowCount();
+		 
+	    // Adiciona os registros.
+	    unidadeMedida.addAll(listaUnidadeMedida);
+		 
+		// Notifica a mudança.
+		fireTableRowsInserted(indice, indice + unidadeMedida.size());
+	}
+		
+	// Remove todos os registros.
+	public void limpar() {
+	    // Remove todos os elementos da lista.
+	    unidadeMedida.clear();
+		 
+	    // Notifica a mudança.
+	    fireTableDataChanged();
 	}
 }

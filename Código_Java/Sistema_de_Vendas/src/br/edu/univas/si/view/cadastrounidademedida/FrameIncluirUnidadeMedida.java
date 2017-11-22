@@ -18,7 +18,7 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 	private PanelUnidadeMedida panelUnidadeMedida;
 	private ButtonsPanelConfirmaFecha buttonsPanel;
 	private ControllerIncluir controller;
-
+	
 	public FrameIncluirUnidadeMedida(ControllerIncluir controller) {
 		super("Incluir - Unidade Medida");
 		this.controller = controller;
@@ -54,7 +54,7 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 		return buttonsPanel;
 	}
 
-	private PanelUnidadeMedida getPanelUnidadeMedida() {
+	public PanelUnidadeMedida getPanelUnidadeMedida() {
 		if (panelUnidadeMedida == null) {
 			panelUnidadeMedida = new PanelUnidadeMedida();
 		}
@@ -72,10 +72,12 @@ public class FrameIncluirUnidadeMedida extends MyJFrame {
 		}else{
 			//Monta TO
 			UnidadeMedidaTO unidadeMedida = new UnidadeMedidaTO(codigo, descricao);
+			
 			//Envia TO para controller.	
 			controller.insertUnidadeMedida(unidadeMedida);
-			//Atualiza grid do frame principal.
-			//TODO
+			
+			//Atualiza JTable do frame principal.
+			controller.updateViewPrincipal();
 			
 			limpaCampos();
 		}

@@ -1,4 +1,4 @@
-package br.edu.univas.si.view.cadastrousuario;
+package br.edu.univas.si.model.tablemodel;
 
 import java.util.ArrayList;
 
@@ -118,7 +118,7 @@ public class TableModelUsuario extends AbstractTableModel {
 	
 	// Remove todos os registros.
 	public void limpar() {
-	    // Remove todos os elementos da lista de sócios.
+	    // Remove todos os elementos da lista.
 	    usuarios.clear();
 	 
 	    // Notifica a mudança.

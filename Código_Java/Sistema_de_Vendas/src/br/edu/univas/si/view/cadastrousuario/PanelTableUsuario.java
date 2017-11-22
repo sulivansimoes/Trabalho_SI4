@@ -1,5 +1,7 @@
 package br.edu.univas.si.view.cadastrousuario;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -8,6 +10,7 @@ import javax.swing.ScrollPaneConstants;
 
 import br.edu.univas.si.model.dao.consulta.jtables.GridUsuarioDAO;
 import br.edu.univas.si.model.exception.UsuarioException;
+import br.edu.univas.si.model.tablemodel.TableModelUsuario;
 import br.edu.univas.si.view.util.MyColor;
 
 public class PanelTableUsuario extends JPanel {
@@ -19,6 +22,7 @@ public class PanelTableUsuario extends JPanel {
 	private JScrollPane scroll;
 	
 	public PanelTableUsuario(){
+		setLayout(new BorderLayout());
 		initialize();
 	}
 	

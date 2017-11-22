@@ -6,6 +6,9 @@ public class UnidadeMedidaTO {
 	private String codigo;	//PK
 	private String descricao;
 
+	public UnidadeMedidaTO(){
+		
+	}
 	
 	public UnidadeMedidaTO(String codigo, String descricao){
 		this.codigo = codigo;

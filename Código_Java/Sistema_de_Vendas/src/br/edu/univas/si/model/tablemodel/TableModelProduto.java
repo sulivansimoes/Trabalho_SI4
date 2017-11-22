@@ -1,4 +1,4 @@
-package br.edu.univas.si.view.cadastroproduto;
+package br.edu.univas.si.model.tablemodel;
 
 import java.util.ArrayList;
 
