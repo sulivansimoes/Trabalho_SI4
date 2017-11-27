@@ -1,0 +1,35 @@
+	public ArrayList<ProdutoTO> populateGridProduto(String codigo) throws ProdutoException{
+		
+		ArrayList<ProdutoTO> list = new ArrayList<ProdutoTO>();
+		
+		String sql = "SELECT codigo_de_barras, descricao, codigo_um, quantidade, preco_venda"
+				   + " FROM Produto"
+				   + " WHERE codigo_um = ?"
+				   + " ORDER BY descricao";
+		
+		Connection connection = null;
+		try{
+				connection = DBUtil.openConnection();
+				PreparedStatement statement = connection.prepareStatement(sql);
+			
+				statement.setString( 1, codigo);
+				ResultSet rs = statement.executeQuery();
+								
+				while(rs.next()){
+					ProdutoTO produto = new ProdutoTO();
+					produto.setCodigoDeBarras(rs.getString(1));
+					produto.setDescricao(rs.getString(2));
+					produto.setCodigo_unidadeMedida(rs.getString(3));
+					produto.setQuantidade(rs.getFloat(4));
+					produto.setPrecoVenda(rs.getFloat(5));
+					list.add(produto);
+				}
+				
+				return list;
+				
+		}catch(Exception e){
+			throw new ProdutoException("Erro ao carregar grid produto em GridProdutoDAO \n"+e);
+		}finally{
+			DBUtil.closeConnection(connection);
+		}
+	}
