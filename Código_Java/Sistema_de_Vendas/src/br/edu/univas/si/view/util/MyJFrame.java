@@ -35,12 +35,12 @@ public class MyJFrame extends JFrame{
 	public MyJFrame(String title){
 		super(title);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(MyJFrame.class.getResource("/br/edu/univas/si/view/imagens/pdv.png")));
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	public MyJFrame(){
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(MyJFrame.class.getResource("/br/edu/univas/si/view/imagens/pdv.png")));
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 		
 	public final static void setlookAndFeel(String look){

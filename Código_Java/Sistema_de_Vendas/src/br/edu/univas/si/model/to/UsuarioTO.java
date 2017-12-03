@@ -63,10 +63,13 @@ public class UsuarioTO {
 
 	public String getSenha() {
 		return senha;
-		//return Encryption.encrypt(senha); TODO analisar
 	}
 
 	public void setSenha(String senha) {
 		this.senha = Encryption.encrypt(senha);
+	}
+	
+	public void setSenhaPura(String senha){
+		this.senha = senha;
 	}
 }

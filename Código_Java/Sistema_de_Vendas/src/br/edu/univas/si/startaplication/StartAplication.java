@@ -1,13 +1,14 @@
 package br.edu.univas.si.startaplication;
 
-import br.edu.univas.si.controller.principal.ControllerPrincipal;
+import br.edu.univas.si.controller.principal.ControllerLogin;
 
 public class StartAplication {
 	
 	public static void main(String[] args) {
-				
-		ControllerPrincipal controllerMenu = new ControllerPrincipal();
-		controllerMenu.initialize();
+		
+		//Aplicação só inicia se usuário for atenticado...
+		ControllerLogin controllerLogin = new ControllerLogin();
+		controllerLogin.inititalize();		
 	}
 
 }

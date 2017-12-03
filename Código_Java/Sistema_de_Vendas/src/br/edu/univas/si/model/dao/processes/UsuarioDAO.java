@@ -11,7 +11,6 @@ import br.edu.univas.si.model.util.Encryption;
 
 /**
  * Summary: Classe contém métodos responsáveis por autenfificar login, Inserir, deletar e alterar cadastro de Usuario no banco de dados 
- * @author Súlivan Simões Silva
  */
 public class UsuarioDAO {
 	
@@ -98,14 +97,13 @@ public class UsuarioDAO {
 		
 		UsuarioTO user =  searchUser(usuario.getCpf());
 		
-		//Senha default do usuario.
+		//Senha default do usuario admin.
 		if(usuario.getCpf().equals("00000000000") && usuario.getSenha().equals(Encryption.encrypt(("admin"))) ){
 			return true;
 		}		
 		
 		//Demais usuarios
 		if(user==null){
-			System.out.println("entrou no if do null"); //TODO retirar
 			return false;
 		}else if(usuario.getCpf().equals(user.getCpf()) && usuario.getSenha().equals(user.getSenha())){ 
 			return true;
@@ -133,8 +131,7 @@ public class UsuarioDAO {
 			if(rs.next()){
 				user = new UsuarioTO();
 				user.setCpf(rs.getString(1));
-				user.setSenha(rs.getString(2));
-				System.out.println("deu certo de entrar no if");
+				user.setSenhaPura(rs.getString(2)); //Seta a senha senha sem fazer criptografia no no TO, pois já chega aqui criptografada.
 				return user;
 			}
 			
