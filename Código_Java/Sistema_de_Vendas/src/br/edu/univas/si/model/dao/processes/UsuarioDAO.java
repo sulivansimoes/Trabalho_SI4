@@ -98,17 +98,18 @@ public class UsuarioDAO {
 		
 		UsuarioTO user =  searchUser(usuario.getCpf());
 		
-		if(usuario.getCpf().equals("00000000000") && usuario.getSenha().equals(Encryption.encrypt("admin")) ){
+		//Senha default do usuario.
+		if(usuario.getCpf().equals("00000000000") && usuario.getSenha().equals(Encryption.encrypt(("admin"))) ){
 			return true;
 		}		
 		
 		//Demais usuarios
 		if(user==null){
+			System.out.println("entrou no if do null"); //TODO retirar
 			return false;
 		}else if(usuario.getCpf().equals(user.getCpf()) && usuario.getSenha().equals(user.getSenha())){ 
 			return true;
 		}
-		
 		return false;
 	}
 	
@@ -116,24 +117,27 @@ public class UsuarioDAO {
 	private UsuarioTO searchUser(String cpf) throws UsuarioException{
 		
 		String sql = "SELECT CPF, SENHA FROM USUARIO"
-				   + "WHERE CPF = ?";
+				   + " WHERE CPF = ?";
 		
+		
+		UsuarioTO user;
 		Connection connection = null;
 		try{
-				connection = DBUtil.openConnection();
-				PreparedStatement statement = connection.prepareStatement(sql);
-				
-				statement.setString(1, cpf);
-				
-				ResultSet rs = statement.executeQuery();
-				
-				if(rs.next()){
-					UsuarioTO user = new UsuarioTO();
-					user.setCpf(rs.getString(1));
-					user.setSenha(rs.getString(2));
-					return user;
-				}
-				
+			connection = DBUtil.openConnection();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			statement.setString(1, cpf);
+
+			ResultSet rs = statement.executeQuery();
+			
+			if(rs.next()){
+				user = new UsuarioTO();
+				user.setCpf(rs.getString(1));
+				user.setSenha(rs.getString(2));
+				System.out.println("deu certo de entrar no if");
+				return user;
+			}
+			
 		}catch(Exception e){
 			new UsuarioException("Erro ao fazer consulta do usuario em Class.UsuarioDAO - searchUser() \n"+e);
 		}finally{

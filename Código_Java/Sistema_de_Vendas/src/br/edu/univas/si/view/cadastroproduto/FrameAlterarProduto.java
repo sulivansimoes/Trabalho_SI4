@@ -5,75 +5,71 @@ import java.awt.Dimension;
 
 import javax.swing.JOptionPane;
 
-import br.edu.univas.si.controller.produto.ControllerIncluir;
+import br.edu.univas.si.controller.produto.ControllerAlterar;
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
 import br.edu.univas.si.model.to.ProdutoTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyJFrame;
 
-/**
- * Summary: Classe contém JFrame onde usuário preenche campos para fazer uma nova inclusão de um produto.
- * @author: Súlivan Simões Silva
- */
-public class FrameInluirProduto extends MyJFrame {
+public class FrameAlterarProduto extends MyJFrame{
 
-	private static final long serialVersionUID = 3846931392661349187L;
-
-	private ButtonsPanelConfirmaFecha buttonsPanel;
+	private static final long serialVersionUID = 1813337309570197083L;
+	
 	private PanelProduto panelProduto;
-	private ControllerIncluir controller;
-
-	public FrameInluirProduto(ControllerIncluir controller) {
-		super("Incluir - Produto");
+	private ButtonsPanelConfirmaFecha buttonsPanel;
+	private ControllerAlterar controller;
+	
+	public FrameAlterarProduto(ControllerAlterar controller) {
+		setTitle("Alterar - Produto");
 		this.controller = controller;
-		setPreferredSize(new Dimension(800, 380));
-
+		setPreferredSize(new Dimension(800, 360));
+		
 		initialize();
 		setResizable(false);
 		pack();
 		setLocationRelativeTo(null);
 	}
-
-	private void initialize() { 
-		add(getButtonsPanel(),BorderLayout.NORTH);
+	
+	private void initialize(){
+		add(getButtonsPanel(), BorderLayout.NORTH);
 		add(getPanelProduto(), BorderLayout.CENTER);
 	}
-
+	
+	public PanelProduto getPanelProduto() {
+		if(panelProduto==null){
+			panelProduto = new PanelProduto();
+			panelProduto.getTextFieldCodigoDeBarras().setEditable(false);
+		}
+		return panelProduto;
+	}
+	
 	private ButtonsPanelConfirmaFecha getButtonsPanel() {
-		if (buttonsPanel == null) {
-			buttonsPanel = new ButtonsPanelConfirmaFecha();
+		if(buttonsPanel==null){
+			buttonsPanel = new  ButtonsPanelConfirmaFecha();
 			buttonsPanel.addButtonsListenersConfirmaFecha(new ButtonsListenersConfirmaFecha() {
 				@Override
 				public void fechaPerformed() {
-					fechaClicked();
+					fechaClicked();					
 				}
-
+				
 				@Override
 				public void confirmaPerformed() {
-					confirmaClicked();
+					confirmaClicked();					
 				}
 			});
 		}
 		return buttonsPanel;
 	}
 	
-	private PanelProduto getPanelProduto(){
-		if(panelProduto==null){
-			panelProduto = new PanelProduto();
-		}
-		return panelProduto;
-	}
-	
 	private void confirmaClicked(){
-		//Extrai conteudo dos campos. 
 		String codigoDeBarras =  String.valueOf(getPanelProduto().getTextFieldCodigoDeBarras().getText().trim().isEmpty() ? 
-											"0" : getPanelProduto().getTextFieldCodigoDeBarras().getText().trim() );
-	
+				"0" : getPanelProduto().getTextFieldCodigoDeBarras().getText().trim()) ;
+
 		float precoVenda = Float.valueOf(getPanelProduto().getTextFieldPrecoVenda().getText().isEmpty() ? 
-										"0" : getPanelProduto().getTextFieldPrecoVenda().getText());
+					"0" : getPanelProduto().getTextFieldPrecoVenda().getText());
 		
 		float quantidade = Float.valueOf(getPanelProduto().getTextFieldQuantidade().getText().isEmpty() ? 
-										"0" : getPanelProduto().getTextFieldQuantidade().getText());
+					"0" : getPanelProduto().getTextFieldQuantidade().getText());
 		
 		String descricao = getPanelProduto().getTextFieldDescricao().getText().trim();
 		String codigoUnidadeMedida = getPanelProduto().getTextFieldCodigoUnidadeMedida().getText(); 
@@ -81,15 +77,14 @@ public class FrameInluirProduto extends MyJFrame {
 		if(! validaPreenchimento(codigoDeBarras, descricao, precoVenda, quantidade, codigoUnidadeMedida)){
 			JOptionPane.showMessageDialog(this, "Campos com asterisco ( * ) são de prechimento obrigatório. Preencha os "
 										 + "campos obrigatórios antes de salvar.");
-		}else{
+		}else{			
 			//Monta TO
 			ProdutoTO produto = new ProdutoTO(codigoDeBarras, descricao, precoVenda, quantidade ,codigoUnidadeMedida);
-			//Manda TO para controller.
-			controller.insertProduto(produto);	
-			//Atauliza JTable
+			//Manda TO para controller
+			controller.updateProduto(produto); 
+			//Atualiza JTable
 			controller.updateViewPrincipal();
-			
-			limpaCampos();
+			this.dispose();
 		}
 	}
 	
@@ -100,14 +95,6 @@ public class FrameInluirProduto extends MyJFrame {
 			return false;
 		}
 		return true;
-	}
-	
-	private void limpaCampos(){
-		getPanelProduto().getTextFieldCodigoDeBarras().setText("");
-		getPanelProduto().getTextFieldDescricao().setText("");
-		getPanelProduto().getTextFieldPrecoVenda().setText("");
-		getPanelProduto().getTextFieldQuantidade().setText("");
-		getPanelProduto().getTextFieldCodigoUnidadeMedida().setText("");
 	}
 	
 	private void fechaClicked(){
@@ -124,5 +111,5 @@ public class FrameInluirProduto extends MyJFrame {
 		if(escolha==0){ //Sim
 				this.dispose();
 		}
-	}
+	}	
 }

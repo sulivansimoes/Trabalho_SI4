@@ -2,18 +2,18 @@ package br.edu.univas.si.model.to;
 
 public class ItensVendaTO {
 
-	private int numeroCupom;	//PFK
-	private String serieCupom;	//PFK
-	private int item;			//PK
-	private long codigoDeBarras;	//FK
+	private int numeroCupom; // PFK
+	private String serieCupom; // PFK
+	private int item; // PK
+	private String codigoDeBarras; // FK
 	private float quantidade;
-	private String codigoUnidadeMedida; //FIXME //FK
+	private String codigoUnidadeMedida;
 	private float valorUnitario;
 	private float valorVenda;
-	
-	public ItensVendaTO(int numeroCupom, String serieCupom, int item, long codigoDeBaaras, float quantidade, 
-						String codigoUnidadeMedida, float valorUnitario, float valorVenda){
-		
+
+	public ItensVendaTO(int numeroCupom, String serieCupom, int item, String codigoDeBaaras, float quantidade,
+			String codigoUnidadeMedida, float valorUnitario ,float valorVenda) {
+
 		this.numeroCupom = numeroCupom;
 		this.serieCupom = serieCupom;
 		this.item = item;
@@ -48,11 +48,11 @@ public class ItensVendaTO {
 		this.item = item;
 	}
 
-	public long getCodigoDeBarras() {
+	public String getCodigoDeBarras() {
 		return codigoDeBarras;
 	}
 
-	public void setCodigoDeBarras(long codigoDeBarras) {
+	public void setCodigoDeBarras(String codigoDeBarras) {
 		this.codigoDeBarras = codigoDeBarras;
 	}
 
@@ -72,19 +72,19 @@ public class ItensVendaTO {
 		this.codigoUnidadeMedida = codigoUnidadeMedida;
 	}
 
-	public float getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(float valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
 	public float getValorVenda() {
 		return valorVenda;
 	}
 
 	public void setValorVenda(float valorVenda) {
 		this.valorVenda = valorVenda;
-	}	
+	}
+	
+	public float getValorUnitario() {
+		return valorUnitario;
+	}
+	
+	public void setValorUnitario(float valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
 }

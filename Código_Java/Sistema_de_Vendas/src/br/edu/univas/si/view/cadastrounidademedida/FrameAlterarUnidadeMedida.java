@@ -65,14 +65,27 @@ public class FrameAlterarUnidadeMedida extends MyJFrame{
 		String codigo = getPanelUnidadeMedida().getTextFieldCodigo().getText().trim();
 		String descricao = getPanelUnidadeMedida().getTextFieldDescricao().getText().trim();
 		
-		UnidadeMedidaTO unidade = new UnidadeMedidaTO(codigo, descricao);
-		//Manda TO para controller.
-		controller.updateUnidadeMedida(unidade);
-		//Atualiza JTable da view principal
-		controller.updateViewPrincipal();
-		
-		this.dispose();//TODO analisar
+		if(! validaPreechimento(codigo, descricao)){
+			JOptionPane.showMessageDialog(this, "Campos com asterisco ( * ) são de prechimento obrigatório. Preencha os "
+										 + "campos obrigatórios antes de salvar.","Problema",JOptionPane.ERROR_MESSAGE);
+		}else{
+				UnidadeMedidaTO unidade = new UnidadeMedidaTO(codigo, descricao);
+				//Manda TO para controller.
+				controller.updateUnidadeMedida(unidade);
+				//Atualiza JTable da view principal
+				controller.updateViewPrincipal();
+				
+				this.dispose();//TODO analisar
+		}
 	}	
+	
+	//Valida o prenchimento dos campos obrigatórios antes de salvar.
+	private boolean validaPreechimento(String codigo, String descricao){
+		if(codigo.trim().isEmpty() || descricao.trim().isEmpty()){
+			return false;
+		}
+		return true;
+	}
 
 	private void fechaClicked(){
 		Object[] opcoes = {"Sim","Não"};

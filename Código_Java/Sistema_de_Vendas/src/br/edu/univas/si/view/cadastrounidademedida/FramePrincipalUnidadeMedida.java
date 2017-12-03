@@ -75,12 +75,12 @@ public class FramePrincipalUnidadeMedida extends MyJFrame {
 	}
 	
 	private void incluiClicked(){
-		controllerIncluir = new ControllerIncluir(this); //Chamando tela de exclusão passando refencia da principal
+		controllerIncluir = new ControllerIncluir(this); //Chamando tela de inclusão passando refencia da principal
 		controllerIncluir.initialize(); 
 	}
 	
 	private void alteraClicked(){			
-		controllerAlterar = new ControllerAlterar(this); //Chamando tela de exclusão passando refencia da principal		
+		controllerAlterar = new ControllerAlterar(this); //Chamando tela de alteração passando refencia da principal		
 		controllerAlterar.initialize();
 		controllerAlterar.populatePane(getRowSelected());
 	}

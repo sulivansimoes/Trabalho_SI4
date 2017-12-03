@@ -6,21 +6,18 @@ import javax.swing.table.AbstractTableModel;
 
 import br.edu.univas.si.model.to.ProdutoTO;
 
-/**
- * Summary: Classe contém métodos que montam um Model para o Produto
- * @author: Súlivan Simões Silva
- */
 public class TableModelProduto extends AbstractTableModel {
 
 	private static final long serialVersionUID = 750282736875565952L;
 	
 	private ArrayList<ProdutoTO> produtos; 
-	private String[] colunas = new String[]{"Código de Barras","Descrição","Unidade medida","Preço venda"};
+	private String[] colunas = new String[]{"Código de Barras","Descrição","Unidade medida","Quantidade de Venda" ,"Preço venda"};
 	//idice das colunas
 	private final int CODIGO_DE_BARRAS = 0;
 	private final int DESCRICAO = 1;
 	private final int UNIDADE_MEDIDA = 2;
-	private final int PRECO_VENDA = 3;
+	private final int QUANTIDADE_VENDA = 3;
+	private final int PRECO_VENDA = 4;
 	
 	public TableModelProduto(){
 		produtos = new ArrayList<ProdutoTO>();
@@ -49,12 +46,14 @@ public class TableModelProduto extends AbstractTableModel {
 	public Class<?> getColumnClass(int columnIndex) {
 		switch(columnIndex){
 			case CODIGO_DE_BARRAS :
-				return Long.class;
+				return String.class;
 			case DESCRICAO :
 				return String.class;
 			case UNIDADE_MEDIDA :
 				return String.class;
 			case PRECO_VENDA :
+				return Float.class;
+			case QUANTIDADE_VENDA :
 				return Float.class;
 			default :
 				throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -79,8 +78,21 @@ public class TableModelProduto extends AbstractTableModel {
 				return p.getCodigo_unidadeMedida();
 			case PRECO_VENDA :
 				return p.getPrecoVenda();
+			case QUANTIDADE_VENDA :
+				return p.getQuantidade();
 			default :
 				throw new IndexOutOfBoundsException("columnIndex out of bounds");
 		}	
+	}
+	
+	//Adiciona o produto especificado no model
+	public void addProduto(ProdutoTO produto){
+		produtos.add(produto);
+		
+		//Pega a quantidade de registros e subtrai 1 para achar o último índice.
+	    int ultimoIndice = getRowCount() - 1;
+		 
+	    // Notifica a mudança.
+	    fireTableRowsInserted(ultimoIndice, ultimoIndice);
 	}
 }

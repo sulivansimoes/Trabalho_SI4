@@ -26,13 +26,14 @@ public class ControllerIncluir {
 	
 	//Inclui registro no banco.
 	public void insertUnidadeMedida(UnidadeMedidaTO unidade){
+		
 		try {
 			modelUnidadeMedida.insertNewUnidadeMedida(unidade);
 		} catch (UnidadeMedidaException e) {
 			e.printStackTrace();
 		}
 	}
-	
+		
 	//Atualiza JTable da viewPrincipalUnidadeMedida.
 	public void updateViewPrincipal(){ 
 		viewPrincipalUnidadeMedida.getTableUnidadeMedia().getTable().setModel(new ControllerConsulta().searchUnidadeMedida());

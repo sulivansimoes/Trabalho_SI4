@@ -11,7 +11,7 @@ import javax.swing.ScrollPaneConstants;
 import br.edu.univas.si.controller.unidademedida.ControllerConsulta;
 import br.edu.univas.si.view.util.MyColor;
 
-public class PanelTableUnidadeMedida extends JPanel {
+public class PanelTableUnidadeMedida extends JPanel{
 
 	private static final long serialVersionUID = 6444281616435672861L;
 
@@ -49,4 +49,6 @@ public class PanelTableUnidadeMedida extends JPanel {
 	public JTable getTable(){
 		return getTableUnidadeMedida();
 	}
+
+	
 }

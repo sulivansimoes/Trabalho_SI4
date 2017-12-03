@@ -8,16 +8,13 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
-import br.edu.univas.si.model.dao.consulta.jtables.GridUsuarioDAO;
-import br.edu.univas.si.model.exception.UsuarioException;
-import br.edu.univas.si.model.tablemodel.TableModelUsuario;
+import br.edu.univas.si.controller.usuario.ControllerConsulta;
 import br.edu.univas.si.view.util.MyColor;
 
 public class PanelTableUsuario extends JPanel {
 
 	private static final long serialVersionUID = 466838327716312031L;
 	
-	private TableModelUsuario tableModelUsuario;
 	private JTable tableUsuario;
 	private JScrollPane scroll;
 	
@@ -30,22 +27,10 @@ public class PanelTableUsuario extends JPanel {
 		add(getScroll());
 	}
 	
-	private TableModelUsuario getTableModelUsuario() {
-		if(tableModelUsuario==null){
-			GridUsuarioDAO data = new GridUsuarioDAO();
-			try {
-				tableModelUsuario = new TableModelUsuario(data.populateGridUsuario());
-			} catch (UsuarioException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		return tableModelUsuario;
-	}
 	private JTable getTableUsuario() {
 		if(tableUsuario==null){
 			tableUsuario = new JTable();
-			tableUsuario.setModel(getTableModelUsuario());
+			tableUsuario.setModel(new ControllerConsulta().searchUsuario());
 			tableUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			tableUsuario.getTableHeader().setBackground(MyColor.DEEP_SKY_BLUE);
 		}
@@ -58,5 +43,9 @@ public class PanelTableUsuario extends JPanel {
 			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		}
 		return scroll;
+	}
+	
+	public JTable getTable(){
+		return getTableUsuario();
 	}
 }

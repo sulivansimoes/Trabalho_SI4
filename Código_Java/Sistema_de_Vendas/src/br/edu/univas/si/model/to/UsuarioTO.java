@@ -18,7 +18,8 @@ public class UsuarioTO {
 		this.nome = nome;
 		this.caixa = caixa;
 		this.admnistrador = administrador;
-		this.senha = Encryption.encrypt(senha);
+		this.senha = senha;
+		this.senha = Encryption.encrypt(senha); //TODO analisar
 	}
 	
 	public UsuarioTO(String cpf, String nome, boolean caixa, boolean gerente){
@@ -61,7 +62,8 @@ public class UsuarioTO {
 	}
 
 	public String getSenha() {
-		return Encryption.encrypt(senha);
+		return senha;
+		//return Encryption.encrypt(senha); TODO analisar
 	}
 
 	public void setSenha(String senha) {

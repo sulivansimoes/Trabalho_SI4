@@ -19,7 +19,7 @@ public class GridProdutoDAO {
 		
 		ArrayList<ProdutoTO> list = new ArrayList<ProdutoTO>();
 		
-		String sql = "SELECT codigo_de_barras, descricao, codigo_um, preco_venda"
+		String sql = "SELECT codigo_de_barras, descricao, codigo_um, quantidade, preco_venda"
 				   + " FROM Produto"
 				   + " ORDER BY descricao";
 		
@@ -31,7 +31,12 @@ public class GridProdutoDAO {
 				ResultSet rs = statement.executeQuery();
 				
 				while(rs.next()){
-					ProdutoTO produto = new ProdutoTO(rs.getLong(1), rs.getString(2), rs.getFloat(4), rs.getString(3));	
+					ProdutoTO produto = new ProdutoTO();
+					produto.setCodigoDeBarras(rs.getString(1));
+					produto.setDescricao(rs.getString(2));
+					produto.setCodigo_unidadeMedida(rs.getString(3));
+					produto.setQuantidade(rs.getFloat(4));
+					produto.setPrecoVenda(rs.getFloat(5));
 					list.add(produto);
 				}
 				

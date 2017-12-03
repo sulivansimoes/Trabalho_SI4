@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import br.edu.univas.si.controller.produto.ControllerAlterar;
+import br.edu.univas.si.controller.produto.ControllerExcluir;
 import br.edu.univas.si.controller.produto.ControllerIncluir;
 import br.edu.univas.si.listeners.ButtonsListenersCadastro;
-import br.edu.univas.si.model.exception.ProdutoException;
+import br.edu.univas.si.model.to.ProdutoTO;
 import br.edu.univas.si.view.defaultcomponents.ButtonsPanelCadastro;
 import br.edu.univas.si.view.util.MyJFrame;
 
@@ -20,7 +22,9 @@ public class FramePrincipalProduto extends MyJFrame {
 
 	private ButtonsPanelCadastro buttonsPanel;
 	private PanelTableProduto tableProduto;
-	private ControllerIncluir controller;
+	private ControllerIncluir controllerIncluir;
+	private ControllerAlterar controllerAlterar;
+	private ControllerExcluir controllerExcluir;
 
 	public FramePrincipalProduto() {
 		super("Cadastro Produto");
@@ -65,39 +69,59 @@ public class FramePrincipalProduto extends MyJFrame {
 		return buttonsPanel;
 	}
 
-	private PanelTableProduto getTabelProduto() {
+	public PanelTableProduto getTabelProduto() {
 		if (tableProduto == null) {
-			try {
 				tableProduto = new PanelTableProduto();
-			} catch (ProdutoException e) {
-				e.printStackTrace();
-			}
 		}
 		return tableProduto;
 	}
 
 	private void incluiClicked() {
-		controller = new ControllerIncluir();
-		controller.initialize();
+		controllerIncluir = new ControllerIncluir(this);
+		controllerIncluir.initialize();
 	}
 
 	private void alteraClicked() {
-		// TODO
+		controllerAlterar = new ControllerAlterar(this);
+		controllerAlterar.initialize();
+		controllerAlterar.populatePanel(getRowSelected());
 	}
 
 	private void excluiClicked() {
-		// TODO
+		controllerExcluir = new ControllerExcluir(this);
+		controllerExcluir.initialize();
+		controllerExcluir.populatePanel(getRowSelected());
 	}
 
 	private void sairClicked() {
+		if(controllerIncluir!=null){
+			controllerIncluir.close();	}
+		if(controllerExcluir!=null){
+			controllerExcluir.close();	}
+		if(controllerAlterar!=null){
+			controllerAlterar.close();	}
+		
 		this.dispose();
 	}
-
-	//FIXME RETIRAR MAIN.
-	public static void main(String[] args) {
-
-		setlookAndFeel(MyJFrame.AERO);
-		FramePrincipalProduto t = new FramePrincipalProduto();
-		t.setVisible(true);
+	
+	//Pega conteudo da linha que o usuario esta posicionado.
+	private ProdutoTO getRowSelected(){
+		int linha = getTabelProduto().getTable().getSelectedRow();
+		ProdutoTO produto = new ProdutoTO();
+		
+		if(linha != -1){ //-1 é flag caso não esteja posiciona em nenhuma linha.
+			String codigoBarras = String.valueOf(String.valueOf(getTabelProduto().getTable().getValueAt(linha, 0)));
+			String descricao    = String.valueOf(getTabelProduto().getTable().getValueAt(linha, 1));
+			String unidademedida= String.valueOf(getTabelProduto().getTable().getValueAt(linha, 2));
+			float quantidadeVenda= Float.valueOf(String.valueOf(getTabelProduto().getTable().getValueAt(linha, 3)));
+			float  preco 		= Float.valueOf(String.valueOf(getTabelProduto().getTable().getValueAt(linha, 4)));
+			
+			produto.setCodigoDeBarras(codigoBarras);
+			produto.setDescricao(descricao);
+			produto.setCodigo_unidadeMedida(unidademedida);
+			produto.setQuantidade(quantidadeVenda);
+			produto.setPrecoVenda(preco);
+		}
+		return produto;
 	}
 }

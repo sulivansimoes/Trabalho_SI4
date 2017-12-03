@@ -2,7 +2,7 @@ package br.edu.univas.si.model.to;
 
 public class ProdutoTO {
 
-	private long codigoDeBarras; 		//PK
+	private String codigoDeBarras; 		//PK
 	private String descricao;
 	private float precoVenda;
 	private float quantidade;
@@ -13,7 +13,7 @@ public class ProdutoTO {
 		
 	}
 	
-	public ProdutoTO(long codigoDeBarras, String descricao, float precoVenda, float quantidade, String codigo_unidadeMedida) {
+	public ProdutoTO(String codigoDeBarras, String descricao, float precoVenda, float quantidade, String codigo_unidadeMedida) {
 		
 		this.codigoDeBarras = codigoDeBarras;
 		this.descricao = descricao;
@@ -22,7 +22,7 @@ public class ProdutoTO {
 		this.codigoUnidadeMedida = codigo_unidadeMedida;
 	}
 	
-	public ProdutoTO(long codigoDeBarras, String descricao, float precoVenda, String codigo_unidadeMedida) {
+	public ProdutoTO(String codigoDeBarras, String descricao, float precoVenda, String codigo_unidadeMedida) {
 
 		this.codigoDeBarras = codigoDeBarras;
 		this.descricao = descricao;
@@ -30,11 +30,11 @@ public class ProdutoTO {
 		this.codigoUnidadeMedida = codigo_unidadeMedida;
 	}
 
-	public long getCodigoDeBarras() {
+	public String getCodigoDeBarras() {
 		return codigoDeBarras;
 	}
 
-	public void setCodigoDeBarras(long codigoDeBarras) {
+	public void setCodigoDeBarras(String codigoDeBarras) {
 		this.codigoDeBarras = codigoDeBarras;
 	}
 

@@ -55,7 +55,7 @@ public class FrameIncluirUsuario extends MyJFrame {
 		return buttonsConfirmaFecha;
 	}
 
-	private PanelUsuario getPanelUsuario() {
+	public PanelUsuario getPanelUsuario() {
 		if (panelUsuario == null) {
 			panelUsuario = new PanelUsuario();
 		}
@@ -79,6 +79,8 @@ public class FrameIncluirUsuario extends MyJFrame {
 			UsuarioTO usuario = new UsuarioTO(cpf, nome, caixa, admnistrador, senha);
 			//Manda TO para controller.
 			controller.insertUsuario(usuario);
+			//Atualiza JTable da viewPrincipal
+			controller.updateViewPrincipal();
 			
 			limpaCampos();
 		}

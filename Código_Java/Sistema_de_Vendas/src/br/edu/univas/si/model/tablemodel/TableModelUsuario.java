@@ -103,7 +103,7 @@ public class TableModelUsuario extends AbstractTableModel {
 		fireTableRowsDeleted(indiceLinha, indiceLinha);
 	}
 	
-	// Adiciona uma lista de sócios no final da lista.
+	// Adiciona uma lista de usuários no final da lista.
 	public void addListaDeUsuarios(ArrayList<UsuarioTO> listaUsuarios) {
 	    // Pega o tamanho antigo da tabela, que servirá
 	    // como índice para o primeiro dos novos registros
