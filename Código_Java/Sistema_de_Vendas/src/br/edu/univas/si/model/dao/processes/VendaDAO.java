@@ -113,4 +113,41 @@ public class VendaDAO {
 			DBUtil.closeConnection(connection);
 		}
 	}
+	
+	public ArrayList<CabecalhoVendaTO> consultaVendas(int mes, int ano) throws VendaException{
+		
+		String sql = "SELECT numero_cupom, serie_cupom, valor_total FROM itens_venda "
+				   + " WHERE  date_trunc(MONTH, data_emissao) = ? "
+				   + "		  date_trunc(YEAR, data_emissao) = ?"
+				   + " ORDER BY numero_cupom"; 
+		
+		Connection connection = null;
+		ArrayList<CabecalhoVendaTO> list= null;
+		try{
+				connection = DBUtil.openConnection();
+				PreparedStatement statement = connection.prepareStatement(sql);
+				
+				statement.setInt(1, mes);
+				statement.setInt(2, ano);
+				ResultSet rs = statement.executeQuery();
+				list = new ArrayList<CabecalhoVendaTO>();
+				
+				while(rs.next()){
+					CabecalhoVendaTO venda = new CabecalhoVendaTO();
+					venda = new CabecalhoVendaTO();
+					venda.setNumeroCupom(rs.getInt(1));
+					venda.setSerieCupom(rs.getString(2));
+					venda.setValorTotal(rs.getFloat(3));
+					
+					list.add(venda);
+				}
+				return list;
+				
+		}catch(Exception e){
+			throw new VendaException("Erro em class VendaDAO \n"+ e);
+		}finally{
+			DBUtil.closeConnection(connection);
+		}
+		
+	}
 }

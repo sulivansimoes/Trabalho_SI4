@@ -30,7 +30,7 @@ public class ButtonsPanelConfirmaFecha extends JPanel {
 	private void initialize(){
 		
 		this.setBorder(new EmptyBorder(10, 10, 10, 10));
-		this.setLayout(new FlowLayout());		 //TODO avaliar
+		this.setLayout(new FlowLayout());		 
 		this.setPreferredSize(new Dimension(0, 80));
 		
 		add(getConfirmaButton());

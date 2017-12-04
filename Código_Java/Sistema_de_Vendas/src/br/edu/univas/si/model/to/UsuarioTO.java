@@ -19,7 +19,7 @@ public class UsuarioTO {
 		this.caixa = caixa;
 		this.admnistrador = administrador;
 		this.senha = senha;
-		this.senha = Encryption.encrypt(senha); //TODO analisar
+		this.senha = Encryption.encrypt(senha);
 	}
 	
 	public UsuarioTO(String cpf, String nome, boolean caixa, boolean gerente){

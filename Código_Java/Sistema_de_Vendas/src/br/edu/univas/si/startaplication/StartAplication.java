@@ -6,7 +6,7 @@ public class StartAplication {
 	
 	public static void main(String[] args) {
 		
-		//Aplicação só inicia se usuário for atenticado...
+		//Aplicação só inicia se usuário for autenticado...
 		ControllerLogin controllerLogin = new ControllerLogin();
 		controllerLogin.inititalize();		
 	}

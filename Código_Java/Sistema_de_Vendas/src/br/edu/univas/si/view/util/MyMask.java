@@ -27,7 +27,19 @@ public class MyMask {
 		try {
 			MaskFormatter mascaraDate = new MaskFormatter("##/##/####");
 			mascaraDate.setValidCharacters("1234567890");
+			mascaraDate.setPlaceholderCharacter('_');
 			mascaraDate.install(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static final void maskAno(JFormattedTextField ano){
+		try {
+			MaskFormatter mascaraAno = new MaskFormatter("####");
+			mascaraAno.setValidCharacters("1234567890");
+			mascaraAno.setPlaceholderCharacter('_');
+			mascaraAno.install(ano);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

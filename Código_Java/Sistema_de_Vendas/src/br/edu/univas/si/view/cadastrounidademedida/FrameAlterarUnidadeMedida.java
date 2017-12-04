@@ -75,7 +75,7 @@ public class FrameAlterarUnidadeMedida extends MyJFrame{
 				//Atualiza JTable da view principal
 				controller.updateViewPrincipal();
 				
-				this.dispose();//TODO analisar
+				this.dispose();
 		}
 	}	
 	

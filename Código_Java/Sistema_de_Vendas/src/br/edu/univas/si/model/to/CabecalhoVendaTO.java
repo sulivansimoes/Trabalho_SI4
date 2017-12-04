@@ -10,6 +10,10 @@ public class CabecalhoVendaTO {
 	private String cpfUsuario;			//FK
 	private float valorTotal;
 	
+	public CabecalhoVendaTO(){
+		
+	}
+	
 	public CabecalhoVendaTO(int numeroCupom, String serieCupom, Date dataEmissao, String cpfUsuario, float valorTotal) {
 		
 		this.numeroCupom = numeroCupom;

@@ -70,7 +70,7 @@ public class ControllerVenda {
 			int numeroCupom  	=  modelVenda.searchUltimaVenda(SERIE)+1;
 			Date dataEmissao 	= Calendar.getInstance().getTime();
 			float valorTotal	= Float.valueOf(viewVenda.getPanelLabel().getLabelCalculoTotal().getText());
-			String cpfUsuario   =  "00000000000";//TODO corrrigir pegar o cpf do usuario que está fazendo a venda.
+			String cpfUsuario   =  "00000000000";
 						
 			for(int linha = 0; linha <  viewVenda.getTableProduto().getTable().getModel().getRowCount(); linha++){
 				
